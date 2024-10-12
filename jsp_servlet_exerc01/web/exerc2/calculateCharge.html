@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算找零-calculateCharge</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>计算找零</h1>
+        <label for="price">应付金额：</label>
+        <input type="number" id="price" name="price" required>
+        <br><br>
+        <label for="cash">实付金额：</label>
+        <input type="number" id="cash" name="cash" required>
+        <br><br>
+        <button type="button" onclick="calculate()">计算</button>
+        <br><br>
+        <textarea id="result" rows="5" cols="50" readonly style="text-align: center;"></textarea>
+    </div>
+
+<script>
+    // 计算找零
+    function calculate() {
+        var price = document.getElementById("price").value;
+        var cash = document.getElementById("cash").value;
+        var result = document.getElementById("result");
+        var change = cash - price;
+        if (change < 0) {
+            result.value = "找零金额不能大于支付金额！";
+        } else {
+            // 计算找零的钞票面值与数量 面值：50, 20, 10, 5, 1
+            var billCounts = [0, 0, 0, 0, 0];
+            var billValues = [50, 20, 10, 5, 1];
+            for (var i = 0; i < billValues.length; i++) {
+                billCounts[i] = Math.floor(change / billValues[i]);  // 向下取整
+                change = change % billValues[i];
+            }
+            // 输出结果
+            result.value = "找零总金额为" + change + "元\n方案如下：\n";
+            for (var i = 0; i < billCounts.length; i++) {
+                if (billCounts[i] > 0) {
+                    result.value += billCounts[i] + "张" + billValues[i] + "元\n";
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
