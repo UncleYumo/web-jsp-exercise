@@ -1,0 +1,44 @@
+plugins {
+  id 'java'
+  id 'org.jetbrains.kotlin.jvm' version '2.0.20-Beta1'
+  id 'war'
+}
+
+group 'com.uncleyumo'
+version '1.0-SNAPSHOT'
+
+repositories {
+  maven {
+    url "https://maven.aliyun.com/repository/public"
+  }
+  mavenCentral()
+}
+
+ext {
+  junitVersion = '5.11.0-M2'
+}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+tasks.withType(JavaCompile) {
+  options.encoding = 'UTF-8'
+}
+
+[compileKotlin, compileTestKotlin].forEach {
+  it.kotlinOptions {
+    jvmTarget = '17'
+  }
+}
+
+
+
+dependencies {
+  compileOnly('jakarta.servlet:jakarta.servlet-api:6.1.0')
+
+  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+useJUnitPlatform()}
