@@ -1,0 +1,10 @@
+{
+    "image": "https://www.itheima.com/img/logo.png",
+    "username": "admin",
+    "name": "管理员",
+    "password": "123456",
+    "gender": 1,
+    "job": 1,
+    "entrydate": "2021-01-01",
+    "deptId": 1
+}

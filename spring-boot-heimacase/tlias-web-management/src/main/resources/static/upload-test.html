@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="http://localhost:8080/upload"
+          method="post"
+          enctype="multipart/form-data"
+    >
+        <label>
+            <span>姓名  </span><input type="text" name="username">
+        </label><br>
+        <label>
+            <span>年龄  </span><input type="text" name="age">
+        </label><br>
+        <label>
+            <span>照片  </span><input type="file" name="image">
+        </label><br>
+        <input type="submit" value="提交">
+    </form>
+    <form action="http://localhost:8080/warehouse/">
+        <input type="submit" value="查看仓库">
+    </form>
+</body>
+</html>

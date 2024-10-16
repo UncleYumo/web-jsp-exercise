@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件请求</title>
+</head>
+<body>
+<h1>文件请求器</h1>
+<label for="filename"></label>
+<input type="text" id="filename" placeholder="请输入文件名，例如 test.txt">
+<button id="fetchButton">获取文件</button>
+<pre id="response"></pre> <!-- 用于显示服务器响应 -->
+<br>
+<h1>文件上传</h1>
+<!-- 文件上传表单 -->
+<form action="http://localhost:8080/upload" method="post" enctype="multipart/form-data">
+    <label>
+        <span>姓名</span><input type="text" name="username">
+    </label><br>
+    <label>
+        <span>年龄</span><input type="text" name="age">
+    </label><br>
+    <label>
+        <span>照片</span><input type="file" name="image">
+    </label><br>
+    <input type="submit" value="提交">
+</form>
+<form action="http://localhost:8080/warehouse/">
+    <input type="submit" value="查看仓库">
+</form>
+
+<script>
+    document.getElementById('fetchButton').addEventListener('click', function() {
+        const filename = document.getElementById('filename').value; // 获取输入的文件名
+        const url = `http://localhost:8080/warehouse/download/${filename}`; // 拼接 URL
+
+        // 使用 window.location 直接下载文件
+        window.location.href = url; // 这将导致浏览器导航到该 URL，从而触发下载
+    });
+</script>
+</body>
+</html>

@@ -1,3 +1,8 @@
 .idea
 *.iml
 tlias-web-management/target
+tlias-web-management/src/main/resources/
+tlias-web-management/src/test/java/com/itheima/TestFileOssUpload.java
+tlias-web-management/src/main/kotlin/com/itheima/uitils/KeyRepository.kt
+# 排除warehouse文件夹下的所有文件
+tlias-web-management/src/main/resources/tempfile/warehouse/*
