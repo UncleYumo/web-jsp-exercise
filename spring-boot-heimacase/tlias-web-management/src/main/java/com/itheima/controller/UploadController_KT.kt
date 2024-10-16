@@ -1,11 +1,13 @@
 package com.itheima.controller
 
 import com.itheima.pojo.Result_KT
+import com.itheima.uitils.AliOSSUtils
 import lombok.extern.slf4j.Slf4j
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.UUID
@@ -23,8 +25,22 @@ import kotlin.io.path.Path
 @Slf4j
 @RestController
 class UploadController_KT {
+    private val logger = LoggerFactory.getLogger(UploadController_KT::class.java)
+
+    @Autowired
+    private lateinit var aliOSSUtils: AliOSSUtils
 
     @PostMapping("/upload")
+    fun upload(image: MultipartFile): Result_KT {
+        logger.info("文件上传 | 文件名[${image.originalFilename}]")
+        val urlFromAliOSS = aliOSSUtils.upload(image)
+        logger.info("文件上传成功 | 文件名[${image.originalFilename}] | 上传地址[${urlFromAliOSS}]")
+        return Result_KT.Companion.success(urlFromAliOSS)
+    }
+
+
+    @Deprecated("请使用upload方法")
+    @PostMapping("/upload-local-storage")
     fun upload(
         username: String?,
         age: Int?,
