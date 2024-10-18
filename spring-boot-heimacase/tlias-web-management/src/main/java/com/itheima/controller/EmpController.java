@@ -75,5 +75,23 @@ public class EmpController {
         return Result_KT.Companion.success("上传成功");
     }
 
+    @GetMapping("/{id}")
+    public Result_KT getById(@PathVariable Integer id) {
+        log.info("查询员工 | 参数 | {}", id);
+        Emp emp = empService.getById(id);
+        return Result_KT.Companion.success(emp);
+    }
+
+    @PutMapping()
+    public Result_KT update(@RequestBody Emp emp) {
+        log.info("修改员工 | 参数 | {}", emp);
+        try {
+            empService.update(emp);
+            return Result_KT.Companion.success();
+        } catch (Exception e) {
+            log.error("更新员工失败: {}", e.getMessage());
+            return Result_KT.Companion.error("更新失败，员工不存在或其他错误");
+        }
+    }
 
 }

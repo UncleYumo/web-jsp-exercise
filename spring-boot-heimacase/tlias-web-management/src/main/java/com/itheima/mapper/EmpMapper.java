@@ -36,4 +36,14 @@ public interface EmpMapper {
             " (username, name, gender, image, job, entrydate, dept_id, create_time, update_time)" +
             " values (#{username}, #{name}, #{gender}, #{image}, #{job}, #{entrydate}, #{deptId}, #{createTime}, #{updateTime})")
     void add(Emp emp);
+
+    // Select Employee according to Emo's id
+    @Select("select * from emp where id = #{id}")
+    Emp getById(Integer id);
+
+    void update(Emp emp);
+
+    // Select Employee according to username and password
+    @Select("Select * from emp where username = #{username} and password = #{password}")
+    Emp getByUsernameAndPassword(Emp emp);
 }

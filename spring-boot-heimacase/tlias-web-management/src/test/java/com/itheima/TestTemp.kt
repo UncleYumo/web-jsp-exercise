@@ -1,5 +1,8 @@
 package com.itheima
 
+import com.itheima.uitils.AliOSSUtils_JAVA
+import com.itheima.uitils.KeyRepository
+import org.junit.jupiter.api.Test
 import kotlin.io.path.Path
 
 /**
@@ -13,4 +16,8 @@ import kotlin.io.path.Path
 
 fun main() {
     println("Path |${Path(".")}")
+    test()
+}
+
+fun test() {
 }

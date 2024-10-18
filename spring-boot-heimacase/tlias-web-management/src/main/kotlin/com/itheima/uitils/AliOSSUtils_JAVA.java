@@ -2,6 +2,8 @@ package com.itheima.uitils;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
@@ -10,12 +12,13 @@ import java.util.UUID;
 /**
  * 阿里云 OSS 工具类
  */
+@Component
 public class AliOSSUtils_JAVA {
 
     private String endpoint = "https://oss-cn-hangzhou.aliyuncs.com";
-    private String accessKeyId = "LTAI4GCH1vX6DKqJWxd6nEuW";
-    private String accessKeySecret = "yBshYweHOpqDuhCArrVHwIiBKpyqSL";
-    private String bucketName = "web-tlias";
+    private String accessKeyId = "346453dfghdfgrfZGRsfgRTGDRG";
+    private String accessKeySecret = "agdfg34t34g3rfg34g";
+    private String bucketName = "56745yfghrthrth";
 
     /**
      * 实现上传图片到OSS

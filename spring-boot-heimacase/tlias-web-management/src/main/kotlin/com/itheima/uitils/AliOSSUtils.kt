@@ -4,6 +4,7 @@ import com.aliyun.oss.OSSClientBuilder
 import lombok.extern.slf4j.Slf4j
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
 import java.util.UUID
@@ -24,7 +25,8 @@ class AliOSSUtils {
     private val endpoint = keyRepository.endpoint
     private val accessKeyId = keyRepository.accessKeyId
     private val accessKeySecret = keyRepository.accessKeySecret
-    private val bucketName = keyRepository.bucketName
+    @Value("\${aliyun.oss.bucket-name}")
+    private var bucketName: String? = null
     private val logger: Logger? = LoggerFactory.getLogger(AliOSSUtils::class.java)
 
     /*
@@ -63,5 +65,9 @@ class AliOSSUtils {
             ossClient.shutdown()
             return url
         }
+    }
+
+    fun getBucketName(): String {
+        return bucketName?: "BucketName is null"
     }
 }

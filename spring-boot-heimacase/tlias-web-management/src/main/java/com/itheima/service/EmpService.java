@@ -2,6 +2,8 @@ package com.itheima.service;
 
 import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageBean_KT;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,4 +22,10 @@ public interface EmpService {
 
     // 添加员工信息
     void add(Emp emp);
+
+    Emp getById(Integer id);
+
+    void update(Emp emp);
+
+    Emp login(Emp emp);
 }

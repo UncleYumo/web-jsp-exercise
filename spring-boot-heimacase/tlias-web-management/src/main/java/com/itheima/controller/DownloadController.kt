@@ -1,6 +1,9 @@
 package com.itheima.controller
 
 import com.itheima.pojo.Result_KT
+import com.itheima.uitils.AliOSSUtils
+import com.itheima.uitils.AliOSSUtils_JAVA
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.RequestEntity
 import org.springframework.http.ResponseEntity
@@ -28,7 +31,10 @@ import javax.servlet.http.HttpServletResponse
 @RestController  // 控制器注解
 @RequestMapping("/warehouse")  // 请求映射
 class DownloadController {
-    
+
+    @Autowired
+    val aliOSSUtils: AliOSSUtils? = null
+
     @GetMapping("/download/{fileName}")
     fun download(response: HttpServletResponse, @PathVariable fileName: String) {
         val projectPath = Paths.get(System.getProperty("user.dir")).toAbsolutePath()
@@ -67,5 +73,10 @@ class DownloadController {
         }
     }
 
+    @GetMapping("/test")
+    fun testGetKey() : Result_KT {
+        val key: String? = aliOSSUtils?.getBucketName()
+        return Result_KT.success("Key | ${key?: "key is null"}")
+    }
 
 }

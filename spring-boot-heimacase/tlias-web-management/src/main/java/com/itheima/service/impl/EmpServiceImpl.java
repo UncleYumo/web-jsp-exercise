@@ -52,4 +52,21 @@ public class EmpServiceImpl implements EmpService {
         System.out.println("emp:" + emp.toString());
         empMapper.add(emp);
     }
+
+    @Override
+    public Emp getById(Integer id) {
+        return empMapper.getById(id);
+    }
+
+    @Override
+    public void update(Emp emp) {
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.update(emp);
+    }
+
+    @Override
+    public Emp login(Emp emp) {
+        System.out.println("username: " + emp.getUsername() + " password: " + emp.getPassword());
+        return empMapper.getByUsernameAndPassword(emp);
+    }
 }
