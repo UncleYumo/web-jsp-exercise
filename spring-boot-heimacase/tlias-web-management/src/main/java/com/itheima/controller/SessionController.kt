@@ -60,7 +60,5 @@ class SessionController {
         val loginUser = session.getAttribute("loginUser-session")  // 获取session属性
         logger.info("testSession02() | loginUser -> $loginUser")
         return Result_KT.success()
-
     }
-
 }

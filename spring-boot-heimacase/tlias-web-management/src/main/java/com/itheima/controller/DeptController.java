@@ -48,6 +48,7 @@ public class DeptController {
     // 新增部门
     @PostMapping()
     public Result_KT add(@RequestBody Dept dept) {
+
         log.info("新增部门 | 请求方式：POST | 请求参数：{}", dept);
         deptService.add(dept);
         return Result_KT.Companion.success(dept);

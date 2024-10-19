@@ -25,3 +25,8 @@ mybatis:
 aliyun:
   oss:
     bucket-name: uncleyumo-oss-heimacase-web01
+
+# Spring事务管理日志
+logging:  # 日志配置
+  level:  # 日志级别
+    org.springframework.jdbc.support.JdbcTransactionManager: debug   # 打印事务日志
