@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.anno.Log;
 import com.itheima.pojo.Dept;
 import com.itheima.pojo.Result_KT;
 import com.itheima.service.DeptService;
@@ -37,8 +38,9 @@ public class DeptController {
 
 
     // DELETE(删除) - 删除指定部门数据
+    @Log
     @DeleteMapping("/{id}")
-    public Result_KT delete(@PathVariable("id") Integer id) {
+    public Result_KT delete(@PathVariable("id") Integer id) throws Exception {
         log.info("删除指定部门数据 | 请求方式：DELETE | 请求参数：id={}", id);
         deptService.delete(id);
         return Result_KT.Companion.success();
@@ -46,6 +48,7 @@ public class DeptController {
 
 
     // 新增部门
+    @Log
     @PostMapping()
     public Result_KT add(@RequestBody Dept dept) {
 
@@ -64,6 +67,7 @@ public class DeptController {
     }
 
     // 根据ID和部门名称修改部门
+    @Log
     @PutMapping()
     public Result_KT updateDept(@RequestBody Dept dept) {
         log.info("根据ID和部门名称修改部门 | 请求方式：PUT");

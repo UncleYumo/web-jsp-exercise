@@ -1,10 +1,10 @@
 package com.itheima.controller;
 
+import com.itheima.anno.Log;
 import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageBean_KT;
 import com.itheima.pojo.Result_KT;
 import com.itheima.service.EmpService;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -40,6 +40,7 @@ public class EmpController {
         return Result_KT.Companion.success(pageBean);
     }
 
+    @Log
     @DeleteMapping("/{ids}")
     public Result_KT delete(@PathVariable List<Integer> ids) {
         log.info("删除员工 | 参数 | {}", ids);
@@ -47,6 +48,7 @@ public class EmpController {
         return Result_KT.Companion.success();
     }
 
+    @Log
     @PostMapping()
     public Result_KT add(@RequestBody Emp emp) {
         log.info("新增员工 | 参数 | {}", emp);
@@ -82,6 +84,8 @@ public class EmpController {
         return Result_KT.Companion.success(emp);
     }
 
+
+    @Log
     @PutMapping()
     public Result_KT update(@RequestBody Emp emp) {
         log.info("修改员工 | 参数 | {}", emp);

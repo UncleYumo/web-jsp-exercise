@@ -12,7 +12,7 @@ public interface DeptService {
     List<Dept> list();
 
     // 根据id查询部门
-    void delete(Integer id);
+    void delete(Integer id) throws Exception;
 
     // 新增部门
     void add(Dept dept);
