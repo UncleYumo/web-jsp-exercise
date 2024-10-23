@@ -1,0 +1,32 @@
+server:
+  port: 8080 # 修改端口号
+
+# Spring配置
+spring:
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.224.195.43:3306/tlias
+    username: test
+    password: _Test141760
+  # 上传文件配置
+  servlet:
+    multipart:
+      max-file-size: 10MB # 文件上传大小限制
+      max-request-size: 10MB # 请求大小限制
+
+# 配置Mybatis
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql日志到控制台
+    map-underscore-to-camel-case: true # 驼峰命名规则
+
+# 用户认证配置
+aliyun:
+  oss:
+    bucket-name: uncleyumo-oss-heimacase-web01
+
+# Spring事务管理日志
+logging:  # 日志配置
+  level:  # 日志级别
+    org.springframework.jdbc.support.JdbcTransactionManager: debug   # 打印事务日志
