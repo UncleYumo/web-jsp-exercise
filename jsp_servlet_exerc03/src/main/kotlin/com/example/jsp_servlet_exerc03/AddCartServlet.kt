@@ -32,6 +32,7 @@ class AddCartServlet : HttpServlet() {
             if (cart == null) {
                 cart = Cart() // 如果 cart 为空则创建新的 Cart 实例
             }
+
             cart.addGoods(goods)
             session.setAttribute("cart", cart)
 

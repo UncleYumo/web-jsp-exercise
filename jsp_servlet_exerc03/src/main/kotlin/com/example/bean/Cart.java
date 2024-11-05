@@ -58,4 +58,5 @@ public class Cart implements Serializable {
             goodsList.get(index).setGcount(num);
         }
     }
+
 }
